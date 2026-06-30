@@ -1,0 +1,264 @@
+{
+    "E": {
+        "description": "",
+        "fields": {
+            "email": {
+                "field_type": "I",
+                "field_name": "email",
+                "description": "E-mail",
+                "is_default": true,
+                "required": true
+            },
+            "password1": {
+                "field_type": "W",
+                "field_name": "password1",
+                "description": "Password",
+                "required": false,
+                "is_default": true
+            },
+            "password2": {
+                "field_type": "W",
+                "field_name": "password2",
+                "description": "Confirm password",
+                "required": false,
+                "is_default": true
+            }
+        }
+    },
+    "C": {
+        "description": "Contact information",
+        "fields": {
+            "42": {
+                "field_id": "42",
+                "field_name": "bar",
+                "field_type": "C",
+                "is_default": false,
+                "description": "Bar",
+                "required": false
+            },
+            "50": {
+                "field_id": "50",
+                "field_name": "foo",
+                "field_type": "S",
+                "is_default": false,
+                "description": "Foo",
+                "required": false,
+                "values": {
+                    "1": "Foo",
+                    "2": "Bar",
+                    "3": "Baz"
+                }
+            }
+        }
+    },
+    "B": {
+        "description": "Billing address",
+        "fields": {
+            "51": {
+                "field_id": "51",
+                "field_name": "b_bar",
+                "field_type": "I",
+                "is_default": false,
+                "description": "Bar",
+                "required": true
+            },
+            "b_firstname": {
+                "field_id": "14",
+                "field_name": "b_firstname",
+                "field_type": "I",
+                "is_default": true,
+                "description": "First name",
+                "required": false
+            },
+            "b_lastname": {
+                "field_id": "16",
+                "field_name": "b_lastname",
+                "field_type": "I",
+                "is_default": true,
+                "description": "Last name",
+                "required": false
+            },
+            "email": {
+                "field_id": "32",
+                "field_name": "email",
+                "field_type": "E",
+                "is_default": true,
+                "description": "E-mail",
+                "required": true
+            },
+            "b_phone": {
+                "field_id": "30",
+                "field_name": "b_phone",
+                "field_type": "I",
+                "is_default": true,
+                "description": "Phone",
+                "required": false
+            },
+            "b_address": {
+                "field_id": "18",
+                "field_name": "b_address",
+                "field_type": "I",
+                "is_default": true,
+                "description": "Address",
+                "required": false
+            },
+            "b_address_2": {
+                "field_id": "20",
+                "field_name": "b_address_2",
+                "field_type": "I",
+                "is_default": true,
+                "description": "Address",
+                "required": false
+            },
+            "b_city": {
+                "field_id": "22",
+                "field_name": "b_city",
+                "field_type": "I",
+                "is_default": true,
+                "description": "City",
+                "required": false
+            },
+            "b_country": {
+                "field_id": "26",
+                "field_name": "b_country",
+                "field_type": "O",
+                "is_default": true,
+                "description": "Country",
+                "required": false,
+                "values": {
+                    "NL": "Netherlands",
+                    "US": "United States"
+                }
+            },
+            "b_state": {
+                "field_id": "24",
+                "field_name": "b_state",
+                "field_type": "A",
+                "is_default": true,
+                "description": "State\/province",
+                "required": false,
+                "values": {
+                    "NL": {
+                        "DR": "Drenthe",
+                        "FL": "Flevoland",
+                        "FR": "Friesland"
+                    },
+                    "US": {
+                        "AL": "Alabama",
+                        "AK": "Alaska",
+                        "AZ": "Arizona"
+                    }
+                }
+            },
+            "b_zipcode": {
+                "field_id": "28",
+                "field_name": "b_zipcode",
+                "field_type": "Z",
+                "is_default": true,
+                "description": "Zip\/postal code",
+                "required": false
+            }
+        }
+    },
+    "S": {
+        "description": "Shipping address",
+        "fields": {
+            "52": {
+                "field_id": "52",
+                "field_name": "s_bar",
+                "field_type": "I",
+                "is_default": false,
+                "description": "Bar",
+                "required": true
+            },
+            "s_firstname": {
+                "field_id": "15",
+                "field_name": "s_firstname",
+                "field_type": "I",
+                "is_default": true,
+                "description": "First name",
+                "required": false
+            },
+            "s_lastname": {
+                "field_id": "17",
+                "field_name": "s_lastname",
+                "field_type": "I",
+                "is_default": true,
+                "description": "Last name",
+                "required": false
+            },
+            "s_phone": {
+                "field_id": "31",
+                "field_name": "s_phone",
+                "field_type": "I",
+                "is_default": true,
+                "description": "Phone",
+                "required": false
+            },
+            "s_address": {
+                "field_id": "19",
+                "field_name": "s_address",
+                "field_type": "I",
+                "is_default": true,
+                "description": "Address",
+                "required": false
+            },
+            "s_address_2": {
+                "field_id": "21",
+                "field_name": "s_address_2",
+                "field_type": "I",
+                "is_default": true,
+                "description": "Address",
+                "required": false
+            },
+            "s_city": {
+                "field_id": "23",
+                "field_name": "s_city",
+                "field_type": "I",
+                "is_default": true,
+                "description": "City",
+                "required": false
+            },
+            "s_country": {
+                "field_id": "27",
+                "field_name": "s_country",
+                "field_type": "O",
+                "is_default": true,
+                "description": "Country",
+                "required": false,
+                "values": {
+                    "NL": "Netherlands",
+                    "US": "United States"
+                }
+            },
+            "s_state": {
+                "field_id": "25",
+                "field_name": "s_state",
+                "field_type": "A",
+                "is_default": true,
+                "description": "State\/province",
+                "required": false,
+                "values": {
+                    "NL": {
+                        "DR": "Drenthe",
+                        "FL": "Flevoland",
+                        "FR": "Friesland"
+                    },
+                    "US": {
+                        "AL": "Alabama",
+                        "AK": "Alaska",
+                        "AZ": "Arizona"
+                    }
+                }
+            },
+            "s_zipcode": {
+                "field_id": "29",
+                "field_name": "s_zipcode",
+                "field_type": "Z",
+                "is_default": true,
+                "description": "Zip\/postal code",
+                "required": false
+            }
+        }
+    }
+}

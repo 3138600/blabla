@@ -1,6 +1,6 @@
 (function(_, $) {
-    function initTumblers() {
-        $('input[type="checkbox"]').not('.tumbler-processed').each(function() {
+    function initTumblers(context) {
+        context.find('input[type="checkbox"]').not('.tumbler-processed').each(function() {
             var $checkbox = $(this);
             // Skip those explicitly marked not to be tumblers if needed
             // Also skip if it's already inside a switch
@@ -10,10 +10,9 @@
 
             // Technical/system hidden checkboxes (not just in inactive tabs) usually have type hidden or display none hardcoded
             // We'll skip if it has a style of display: none specifically, but .is(':hidden') catches inactive tabs which is bad
-            // We can check if it's completely out of normal flow or has specific classes
             if ($checkbox.css('display') === 'none' && $checkbox.closest('.hidden').length === 0 && $checkbox.closest('.ui-tabs-hide').length === 0) {
-                 // It's possible it is genuinely hidden.
-                 // Actually, it's safer to just wrap everything unless it's a completely hidden system checkbox
+                 // Skip genuinely hidden
+                 return;
             }
 
             $checkbox.addClass('tumbler-processed');
@@ -32,7 +31,7 @@
             var $wrapper = $('<div class="switch switch-mini cm-switch-change list-btns has-switch"></div>');
             var $inner = $('<div class="' + switchClass + '"></div>');
             var $leftSpan = $('<span class="switch-left switch-mini">ON</span>');
-            var $label = $('<label class="switch-mini">&nbsp;</label>');
+            var $label = $('<span class="switch-mini">&nbsp;</span>');
             var $rightSpan = $('<span class="switch-right switch-mini">OFF</span>');
 
             // Wrap checkbox
@@ -56,7 +55,7 @@
     }
 
     $(document).ready(function() {
-        initTumblers();
+        initTumblers($(document));
 
         // Listen for changes on all checkboxes to update visually
         $(document).on('change', 'input[type="checkbox"]', function() {
@@ -71,17 +70,18 @@
             }
         });
 
-        // Use MutationObserver to catch dynamically added checkboxes
+        // Use MutationObserver to catch dynamically added checkboxes efficiently
         var observer = new MutationObserver(function(mutations) {
-            var shouldInit = false;
             mutations.forEach(function(mutation) {
                 if (mutation.addedNodes && mutation.addedNodes.length > 0) {
-                    shouldInit = true;
+                    for (var i = 0; i < mutation.addedNodes.length; i++) {
+                        var node = mutation.addedNodes[i];
+                        if (node.nodeType === 1) { // ELEMENT_NODE
+                            initTumblers($(node));
+                        }
+                    }
                 }
             });
-            if (shouldInit) {
-                initTumblers();
-            }
         });
 
         observer.observe(document.body, { childList: true, subtree: true });

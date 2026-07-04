@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>tumbler_checkbox</id>
+    <version>1.0</version>
+    <priority>100</priority>
+    <status>active</status>
+    <default_language>ru</default_language>
+    <compatibility>
+        <core_version>
+            <min>4.9.2</min>
+        </core_version>
+    </compatibility>
+</addon>

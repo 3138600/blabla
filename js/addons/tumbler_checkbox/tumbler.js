@@ -1,18 +1,11 @@
 (function(_, $) {
     function initTumblers(context) {
-        context.find('input[type="checkbox"]').not('.tumbler-processed').each(function() {
+        context.find('input[type="checkbox"].cm-product-filters-checkbox').not('.tumbler-processed').each(function() {
             var $checkbox = $(this);
             // Skip those explicitly marked not to be tumblers if needed
             // Also skip if it's already inside a switch
             if ($checkbox.closest('.switch').length > 0 || $checkbox.hasClass('cm-no-tumbler')) {
                 return;
-            }
-
-            // Technical/system hidden checkboxes (not just in inactive tabs) usually have type hidden or display none hardcoded
-            // We'll skip if it has a style of display: none specifically, but .is(':hidden') catches inactive tabs which is bad
-            if ($checkbox.css('display') === 'none' && $checkbox.closest('.hidden').length === 0 && $checkbox.closest('.ui-tabs-hide').length === 0) {
-                 // Skip genuinely hidden
-                 return;
             }
 
             $checkbox.addClass('tumbler-processed');
@@ -42,6 +35,11 @@
 
             $newInner.append($leftSpan).append($label).append($rightSpan);
 
+            // Handle disabled state initially
+            if ($checkbox.prop('disabled')) {
+                $newWrapper.hide();
+            }
+
             // Handle click on the wrapper to toggle the checkbox
             $newWrapper.on('click', function(e) {
                 if (e.target !== $checkbox[0]) {
@@ -58,14 +56,24 @@
         initTumblers($(document));
 
         // Listen for changes on all checkboxes to update visually
-        $(document).on('change', 'input[type="checkbox"]', function() {
+        $(document).on('change', 'input[type="checkbox"].cm-product-filters-checkbox', function() {
             var $checkbox = $(this);
+            var $wrapper = $checkbox.closest('.switch');
             var $inner = $checkbox.closest('.switch-on, .switch-off');
+
             if ($inner.length > 0) {
                 if ($checkbox.prop('checked')) {
                     $inner.removeClass('switch-off').addClass('switch-on');
                 } else {
                     $inner.removeClass('switch-on').addClass('switch-off');
+                }
+            }
+
+            if ($wrapper.length > 0) {
+                if ($checkbox.prop('disabled')) {
+                    $wrapper.hide();
+                } else {
+                    $wrapper.show();
                 }
             }
         });

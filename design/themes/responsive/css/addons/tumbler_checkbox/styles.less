@@ -1,0 +1,63 @@
+.has-switch {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 20px; /* Pill shape */
+  position: relative;
+  text-align: left;
+  overflow: hidden;
+  line-height: 8px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  min-width: 40px;
+  height: 20px;
+  background: #e5e5e5;
+  transition: background 0.3s ease;
+}
+.has-switch.switch-mini {
+  min-width: 36px;
+  height: 18px;
+}
+.has-switch > div {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.has-switch > div.switch-on {
+  background: #34C759; /* Apple green */
+}
+.has-switch > div.switch-off {
+  background: #e5e5e5;
+}
+.has-switch input[type=radio],
+.has-switch input[type=checkbox] {
+  display: none;
+}
+
+/* The slider knob */
+.has-switch span.switch-knob {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  z-index: 100;
+}
+
+.has-switch > div.switch-on span.switch-knob {
+  transform: translateX(18px);
+}
+.has-switch > div.switch-off span.switch-knob {
+  transform: translateX(0);
+}

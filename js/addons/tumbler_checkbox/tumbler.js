@@ -2,10 +2,18 @@
     function initTumblers() {
         $('input[type="checkbox"]').not('.tumbler-processed').each(function() {
             var $checkbox = $(this);
-            // Skip hidden checkboxes and those explicitly marked not to be tumblers if needed
+            // Skip those explicitly marked not to be tumblers if needed
             // Also skip if it's already inside a switch
-            if ($checkbox.closest('.switch').length > 0 || $checkbox.is(':hidden') || $checkbox.hasClass('cm-no-tumbler')) {
+            if ($checkbox.closest('.switch').length > 0 || $checkbox.hasClass('cm-no-tumbler')) {
                 return;
+            }
+
+            // Technical/system hidden checkboxes (not just in inactive tabs) usually have type hidden or display none hardcoded
+            // We'll skip if it has a style of display: none specifically, but .is(':hidden') catches inactive tabs which is bad
+            // We can check if it's completely out of normal flow or has specific classes
+            if ($checkbox.css('display') === 'none' && $checkbox.closest('.hidden').length === 0 && $checkbox.closest('.ui-tabs-hide').length === 0) {
+                 // It's possible it is genuinely hidden.
+                 // Actually, it's safer to just wrap everything unless it's a completely hidden system checkbox
             }
 
             $checkbox.addClass('tumbler-processed');
@@ -39,7 +47,9 @@
             $newWrapper.on('click', function(e) {
                 if (e.target !== $checkbox[0]) {
                     e.preventDefault();
-                    $checkbox.prop('checked', !$checkbox.prop('checked')).trigger('change');
+                    if (!$checkbox.prop('disabled')) {
+                        $checkbox.prop('checked', !$checkbox.prop('checked')).trigger('change');
+                    }
                 }
             });
         });

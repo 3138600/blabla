@@ -1,11 +1,7 @@
 .has-switch {
   display: inline-block;
   cursor: pointer;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px solid;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-radius: 20px; /* Pill shape */
   position: relative;
   text-align: left;
   overflow: hidden;
@@ -16,110 +12,52 @@
   -o-user-select: none;
   user-select: none;
   vertical-align: middle;
-  min-width: 100px;
+  min-width: 40px;
+  height: 20px;
+  background: #e5e5e5;
+  transition: background 0.3s ease;
 }
 .has-switch.switch-mini {
-  min-width: 50px;
-}
-.has-switch.switch-mini i.switch-mini {
-  width: 10px;
+  min-width: 36px;
+  height: 18px;
 }
 .has-switch > div {
   display: inline-block;
-  width: 150%;
+  width: 100%;
+  height: 100%;
   position: relative;
   top: 0;
-}
-.has-switch > div.switch-off {
-  left: -50%;
+  left: 0;
 }
 .has-switch > div.switch-on {
-  left: 0%;
+  background: #34C759; /* Apple green */
+}
+.has-switch > div.switch-off {
+  background: #e5e5e5;
 }
 .has-switch input[type=radio],
 .has-switch input[type=checkbox] {
   display: none;
 }
-.has-switch span,
-.has-switch span {
-  text-align: center;
-  z-index: 1;
-}
-.has-switch span.switch-left {
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-left-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-bottom-left-radius: 4px;
-}
-.has-switch span.switch-right {
-  color: #333333;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  background-color: #f0f0f0;
-  background-image: -moz-linear-gradient(top, #e6e6e6, #ffffff);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#ffffff));
-  background-image: -webkit-linear-gradient(top, #e6e6e6, #ffffff);
-  background-image: -o-linear-gradient(top, #e6e6e6, #ffffff);
-  background-image: linear-gradient(to bottom, #e6e6e6, #ffffff);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe6e6e6', endColorstr='#ffffffff', GradientType=0);
-  border-color: #ffffff #ffffff #d9d9d9;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #ffffff;
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
-.has-switch span.switch-left,
-.has-switch span.switch-right {
+
+/* The slider knob */
+.has-switch span.switch-knob {
   display: block;
-  float: left;
-  width: 50%;
-  padding-bottom: 2px;
-  padding-top: 2px;
-  font-size: 14px;
-  line-height: 16px;
-}
-.has-switch span.switch-mini {
-  font-size: 9px;
-  line-height: 9px;
-  padding-bottom: 2px;
-  padding-top: 2px;
-}
-.has-switch span.switch-mini {
-  position: relative;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
   z-index: 100;
-  float: left;
-  width: 50%;
-  margin: 0 -25%;
-}
-.has-switch span.switch-left, .has-switch span.switch-right, .has-switch span {
-    cursor: pointer;
-    float: left;
-    height: 100%;
-    margin: 0;
-    padding-bottom: 2px;
-    padding-top: 2px;
-    text-align: center;
-    width: 50%;
-    z-index: 1;
-    box-sizing: border-box;
 }
 
-.has-switch span {
-    background-color: #f5f5f5;
-    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-    background-repeat: repeat-x;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    border-left: 1px solid #cccccc;
-    border-right: 1px solid #cccccc;
-    position: relative;
-    z-index: 100;
+.has-switch > div.switch-on span.switch-knob {
+  transform: translateX(18px);
 }
-.has-switch span.switch-left {
-  background-color: #005fcc;
-  background-image: linear-gradient(to bottom, #0044cc, #0088cc);
-  background-repeat: repeat-x;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+.has-switch > div.switch-off span.switch-knob {
+  transform: translateX(0);
 }

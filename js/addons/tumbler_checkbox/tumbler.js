@@ -45,9 +45,7 @@
             // Create tumbler structure
             var $wrapper = $('<div class="switch switch-mini cm-switch-change list-btns has-switch"></div>');
             var $inner = $('<div class="' + data.switchClass + '"></div>');
-            var $leftSpan = $('<span class="switch-left switch-mini">ON</span>');
-            var $label = $('<span class="switch-mini">&nbsp;</span>');
-            var $rightSpan = $('<span class="switch-right switch-mini">OFF</span>');
+            var $label = $('<span class="switch-mini switch-knob">&nbsp;</span>');
 
             // Wrap checkbox
             $checkbox.wrap($wrapper);
@@ -55,7 +53,7 @@
             $checkbox.wrap($inner);
             var $newInner = $checkbox.parent();
 
-            $newInner.append($leftSpan).append($label).append($rightSpan);
+            $newInner.append($label);
 
             // Handle disabled state initially
             if (data.isDisabled) {

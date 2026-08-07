@@ -1,1 +1,0 @@
-{script src="js/addons/mobile_app/colors.js"}
